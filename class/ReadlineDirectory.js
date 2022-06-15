@@ -84,7 +84,8 @@ class ReadLineDirectory{
     }
 
     _exeCmd(value){
-        switch (value) {
+        try{        
+            switch (value) {
             case "/help":
                 this._help()
                 break;
@@ -106,24 +107,37 @@ class ReadLineDirectory{
             }
             if(!this.stop){
                 this._reStart()
-            }
+            }}catch(e){
+            console.log("\x1b[31mError : "+e.message+"\x1b[0m")
+        }
+
     
     }
 
     _reStart(){
-        this.readline.question(`\n \x1b[33mEnter /_help to display a list of commands. 
-        Otherwise just enter any existing commands.\n\x1b[0m`,(value)=>{
-            this._exeCmd(value)
-           });
+        try{
+            this.readline.question(`\n \x1b[33mEnter /_help to display a list of commands. 
+            Otherwise just enter any existing commands.\n\x1b[0m`,(value)=>{
+                this._exeCmd(value)
+            });
+        }catch(e){
+            console.log("\x1b[31mError : "+e.message+"\x1b[0m")
+        }
+
     }
 
     start(){
-        this.readline.question(`\x1b[33mHey Sir, i'm your directory ! 
-        Enter /_help to display a list of commands. 
-        Otherwise just enter any existing commands.\n\x1b[0m`,(value)=>{
-            this._exeCmd(value)
-           });
+        try{
+            this.readline.question(`\x1b[33mHey Sir, i'm your directory ! 
+            Enter /_help to display a list of commands. 
+            Otherwise just enter any existing commands.\n\x1b[0m`,(value)=>{
+                this._exeCmd(value)
+               });
+            }catch(e){
+                console.log("\x1b[31mError : "+e.message+"\x1b[0m")
+            }
         }
+
 }
 
 module.exports=ReadLineDirectory
