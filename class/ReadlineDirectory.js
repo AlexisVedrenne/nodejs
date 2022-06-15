@@ -35,15 +35,16 @@ class ReadLineDirectory{
                 this.readline.question(`\x1b[33mWhat is the phone number of \x1b[34m${prenom} ${nom}\x1b[33m ?`+"\n\x1b[0m",(value)=>{
                     if(value.match(/^(0[6])(?:[ _.-]?(\d{2})){4}$/)){
                         phone=value
+                        console.log(`\x1b[32mYour contact \x1b[34m${prenom} ${nom}\x1b[32m have beean added succesfully to the directory !\x1b[0m`)
+                        this.directory.addContact(nom,prenom,phone)
+                        this._reStart()
                     }
                     else{
                         console.log("\x1b[31mWrong phone number !\x1b[0m")
                         this._reStart()
                     }
                     
-                    console.log(`\x1b[32mYour contact \x1b[34m${prenom} ${nom}\x1b[32m have beean added succesfully to the directory !\x1b[0m`)
-                    this.directory.addContact(nom,prenom,phone)
-                    this._reStart()
+
                 });
             });
         });
