@@ -6,6 +6,9 @@
   "repository": "https://github.com/AlexisVedrenne/nodejs.git",
   "author": "Alexis Vedrenne <alexisvedrenne482@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "linebyline": "^1.3.0",
     "readline": "^1.3.0"
