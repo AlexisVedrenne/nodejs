@@ -38,12 +38,12 @@ class ReadLineDirectory{
                     }
                     else{
                         console.log("\x1b[31mWrong phone number !\x1b[0m")
-                        _reStart()
+                        this._reStart()
                     }
                     
                     console.log(`\x1b[32mYour contact \x1b[34m${prenom} ${nom}\x1b[32m have beean added succesfully to the directory !\x1b[0m`)
-                    this.directory._addContact(nom,prenom,phone)
-                    _reStart()
+                    this.directory.addContact(nom,prenom,phone)
+                    this._reStart()
                 });
             });
         });
@@ -52,17 +52,17 @@ class ReadLineDirectory{
     _deleteContact(){
         console.clear()
         console.log("\x1b[33mThere is the instructions for delete a contact. Get the ID of the contact with the list under.\n\x1b[0m")
-        this.directory.listContacts()
+        this.directory.listeContact()
         console.log("\x1b[33mNow choice the ID of the contact you want to delete !\n\x1b[0m")
         this.readline.question(`\x1b[33mWhat is the ID of the contact ?\n\x1b[0m`, value => {
-            this.directory._deleteContact(value)
+            this.directory.deleteContact(value)
             this._reStart()
         });
     }
 
     _liste(){
         console.clear()
-        this.directory._listeContact()
+        this.directory.listeContact()
     }
 
     _stopInterface(){
@@ -76,7 +76,7 @@ class ReadLineDirectory{
         console.log(`\x1b[33m
         There the detail of different command available
     
-        \x1b[34m/_help\x1b[33m \x1b[37m: Display all the command available
+        \x1b[34m/help\x1b[33m \x1b[37m: Display all the command available
         \x1b[34m/stop\x1b[33m \x1b[37m: Quit your loved directory
         \x1b[34m/add\x1b[33m \x1b[37m: Add new contact in your directory
         \x1b[34m/list\x1b[33m \x1b[37m: List all the contacts you have in your loved directory
@@ -103,6 +103,7 @@ class ReadLineDirectory{
                 this._addContact()
                 break
             default:
+                console.log("\x1b[31mCommande not found !\x1b[0m")
                 break
             }
             if(!this.stop){
@@ -116,7 +117,7 @@ class ReadLineDirectory{
 
     _reStart(){
         try{
-            this.readline.question(`\n \x1b[33mEnter /_help to display a list of commands. 
+            this.readline.question(`\n \x1b[33mEnter /help to display a list of commands. 
             Otherwise just enter any existing commands.\n\x1b[0m`,(value)=>{
                 this._exeCmd(value)
             });

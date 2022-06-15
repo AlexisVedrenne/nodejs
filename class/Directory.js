@@ -24,7 +24,7 @@ class Directory {
         }else{
             console.log("\x1b[31mThis ID not exist !\x1b[0m")
         }
-        this.listContacts()
+        this.listeContact()
     }
 
     listeContact(){
