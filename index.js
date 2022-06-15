@@ -22,7 +22,7 @@ function addContact(){
         contact.firstname=value
         readline.question(`\x1b[33mWhat is the family name of your contact ?`+"\n\x1b[0m",(value)=>{
             contact.lastname=value
-            readline.question(`\x1b[33mWhat is the phone number of ${contact.firstname} ${contact.lastname} ?`+"\n\x1b[0m",(value)=>{
+            readline.question(`\x1b[33mWhat is the phone number of \x1b[34m${contact.firstname} ${contact.lastname}\x1b[33m ?`+"\n\x1b[0m",(value)=>{
                 if(value.match(/^(0[6])(?:[ _.-]?(\d{2})){4}$/)){
                     contact.phone=value
                 }
@@ -37,7 +37,7 @@ function addContact(){
                     reStart()
                 }
                 
-                console.log(`\x1b[32mYour contact ${contact.firstname} ${contact.lastname} have beean added succesfully to the directory !\x1b[0m`)
+                console.log(`\x1b[32mYour contact \x1b[34m${contact.firstname} ${contact.lastname}\x1b[32m have beean added succesfully to the directory !\x1b[0m`)
                 contact.id=contacts.length+1
                 contacts.push(contact)
                 contact={
@@ -83,11 +83,11 @@ async function exeCmd(value){
             console.log(`\x1b[33m
             There the detail of different command available
 
-            /help : Display all the command available
-            /stop: Quit your loved directory
-            /add: Add new contact in your directory
-            /list: List all the contacts you have in your loved directory
-            /delete: Delete one of your contacts by specifying his ID\x1b[0m`)
+            \x1b[34m/help\x1b[33m \x1b[37m: Display all the command available
+            \x1b[34m/stop\x1b[33m \x1b[37m: Quit your loved directory
+            \x1b[34m/add\x1b[33m \x1b[37m: Add new contact in your directory
+            \x1b[34m/list\x1b[33m \x1b[37m: List all the contacts you have in your loved directory
+            \x1b[34m/delete\x1b[33m \x1b[37m: Delete one of your contacts by specifying his ID\x1b[0m`)
             break;
         
         case "/stop":
@@ -138,7 +138,6 @@ async function start(){
 
     }
 
-    
 const main= async()=>{
     await start()
 }
@@ -146,5 +145,5 @@ const main= async()=>{
 try{
     main()
 }catch(e){
-    console.log("%c "+e.message,'font-color:red')
+    console.log(+e.message)
 }
