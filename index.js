@@ -1,3 +1,6 @@
+//Autheur Alexis Vedrenne
+
+
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -147,3 +150,5 @@ try{
 }catch(e){
     console.log(+e.message)
 }
+
+//Autheur Alexis Vedrenne
