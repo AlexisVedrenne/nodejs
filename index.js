@@ -23,7 +23,20 @@ function addContact(){
         readline.question(`What is the family name of your contact ?`+"\n",(value)=>{
             contact.lastname=value
             readline.question(`What is the phone number of ${contact.firstname} ${contact.lastname} ?`+"\n",(value)=>{
-                contact.phone=value
+                if(value.match(/^(0[6])(?:[ _.-]?(\d{2})){4}$/)){
+                    contact.phone=value
+                }
+                else{
+                    console.log("Wrong phone number !")
+                    contact={
+                        id:null,
+                        phone:null,
+                        firstname:null,
+                        lastname:null,
+                    }
+                    reStart()
+                }
+                
                 console.log(`Your contact ${contact.firstname} ${contact.lastname} have beean added succesfully to the directory !`)
                 contact.id=contacts.length+1
                 contacts.push(contact)
@@ -130,4 +143,8 @@ const main= async()=>{
     await start()
 }
 
-main()
+try{
+    main()
+}catch(e){
+    console.log(e.message)
+}
