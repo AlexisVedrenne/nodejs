@@ -1,0 +1,9 @@
+{
+  "name": "coursnode",
+  "version": "1.0.0",
+  "description": "cours node ",
+  "main": "index.js",
+  "repository": "https://github.com/AlexisVedrenne/nodejs.git",
+  "author": "Alexis Vedrenne <alexisvedrenne482@gmail.com>",
+  "license": "MIT"
+}

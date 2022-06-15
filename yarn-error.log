@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\irodf\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Python27\;C:\Python27\Scripts;C:\Users\irodf\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\irodf\AppData\Local\Programs\Python\Python310\;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\wamp64\bin\php\php7.4.9;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Symfony;C:\Program Files\PuTTY\;C:\wamp64\bin\php\php7.4.26;C:\Program Files\dotnet\;C:\Program Files\Java\jdk1.8.0_321\bin;C:\Users\miki\AppData\Local\Android\android-sdk;C:\Users\irodf\Documents\gradle-4.10.3\bin;C:\Users\irodf\AppData\Local\Android\Sdk\tools;C:\Users\irodf\AppData\Local\Android\Sdk\platform-tools;C:\ProgramData\chocolatey\bin;C:\Users\irodf\AppData\Roaming\npm;C:\Users\irodf\Documents\flutter\bin;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\irodf\Documents\flutter\bin;C:\Users\irodf\AppData\Roaming\npm;C:\Users\irodf\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\irodf\AppData\Local\Microsoft\WindowsApps;
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\irodf\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:137143:13)
+      at Interface.emit (node:events:527:28)
+      at Interface._ttyWrite (node:readline:1081:16)
+      at ReadStream.onkeypress (node:readline:288:10)
+      at ReadStream.emit (node:events:527:28)
+      at emitKeys (node:internal/readline/utils:358:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:61:36)
+      at ReadStream.emit (node:events:527:28)
+      at addChunk (node:internal/streams/readable:315:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
