@@ -11,16 +11,41 @@ let contact={
     lastname:null,
 }
 
-function addContact(contact){
-    contacts.push(contact)
+readline.on('close', (input) => {
+    console.log(`\nThank you to have use your directory !\n See you again !\n`);
+  });
+
+function addContact(){
+    console.clear()
+    console.log("Let's add a new contact !")
+    readline.question(`What is the first-name of your contact ?`+"\n",(value)=>{
+        contact.firstname=value
+        readline.question(`What is the family name of your contact ?`+"\n",(value)=>{
+            contact.lastname=value
+            readline.question(`What is the phone number of ${contact.firstname} ${contact.lastname} ?`+"\n",(value)=>{
+                contact.phone=value
+                console.log(`Your contact ${contact.firstname} ${contact.lastname} have beean added succesfully to the directory !`)
+                contact.id=contacts.length+1
+                contacts.push(contact)
+                contact={
+                    id:null,
+                    phone:null,
+                    firstname:null,
+                    lastname:null,
+                }
+                reStart()
+            });
+        });
+    });
 };
 
 function deleteContact(id){
     if(contacts.find((contact)=>contact.id==id)){
-        contacts.slice(1,id)
+        contacts.splice(id-1,1)
     }else{
         console.log("This ID not exist !")
     }
+    listContacts()
 }
 
 function listContacts(){
@@ -36,9 +61,12 @@ function listContacts(){
 
 };
 
+
+
 async function exeCmd(value){
     switch (value) {
         case "/help":
+            console.clear()
             console.log(`
             There the detail of different command available
 
@@ -50,44 +78,41 @@ async function exeCmd(value){
             break;
         
         case "/stop":
+            console.clear()
             readline.close()
             stop=true
             break
         case "/list":
+            console.clear()
             listContacts()
             break;
         case "/delete":
+            console.clear()
             console.log("There is the instructions for delete a contact. Get the ID of the contact with the list under.\n")
             listContacts()
             console.log("Now choice the ID of the contact you want to delete !\n")
-            await readline.question(`What is the ID of the contact ?\n`, value => {
+            readline.question(`What is the ID of the contact ?\n`, value => {
                 deleteContact(value)
+                reStart()
             });
             break
         case "/add":
-            console.log("Let's add a new contact !")
-            contact.firstname= await readline.question(`What is the first-name of your contact ?\n`);
-            contact.lastname= await readline.question(`What is the family name of your contact ?\n`)
-            contact.phone= await readline.question(`What is the phone number of ${contact.firstname} ${contact.lastname} ?\n`)
-            console.log(`Your contact ${contact.firstname} ${contact.lastname} have beean added succesfully to the directory !`)
-            contact.id=contacts.length+1
-            addContact(contact)
-            contact={
-                id:null,
-                phone:null,
-                firstname:null,
-                lastname:null,
-            }
+            addContact()
             break
         default:
             break
         }
         if(!stop){
-            await readline.question(`\nEnter another commande or exit.\n`,async(value)=>{
-                await exeCmd(value)
-               });
+            reStart()
         }
 
+}
+
+async function reStart(){
+    await readline.question(`\n Enter /help to display a list of commands. 
+    Otherwise just enter any existing commands.\n`,async(value)=>{
+        await exeCmd(value)
+       });
 }
 
 async function start(){
@@ -100,6 +125,7 @@ async function start(){
 
     }
 
+    
 const main= async()=>{
     await start()
 }
