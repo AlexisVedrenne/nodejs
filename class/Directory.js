@@ -20,7 +20,7 @@ class Directory {
 
     deleteContact(id){
         if(this.contacts.find((contact)=>contact.id==id)){
-            this.contacts.splice(id-1,1)
+            this.contacts=this.contacts.filter((val)=>val.id!=id)
         }else{
             console.log("\x1b[31mThis ID not exist !\x1b[0m")
         }
